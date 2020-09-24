@@ -1,6 +1,6 @@
 {
     "name": "nightwatch-saucelabs-endsauce",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.",
     "main": "index.js",
     "scripts": {
