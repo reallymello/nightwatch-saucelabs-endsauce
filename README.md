@@ -13,7 +13,7 @@ In your Nightwatch test project
 
 In your Nightwatch nightwatch.json configuration file add or append this entry
 
-> "custom_commands_path": ["./node_modules/nightwatch-saucelabs-endsauce/src/commands"]
+> "custom_commands_path": ["./node_modules/nightwatch-saucelabs-endsauce/commands"]
 
 The SauceLabs package looks in the nightwatch.json file for the values it needs to connect to the SauceLabs REST API such as the username, apikey, urls and so forth. Below is an excerpt of the important parts. The desired capabilities section is more to tell SauceLabs the environment you want the test to run under.
 
