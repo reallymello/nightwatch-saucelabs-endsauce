@@ -1,0 +1,18 @@
+{
+    "name": "nightwatch-saucelabs-endsauce",
+    "version": "1.0.0",
+    "description": "Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+    "Nightwatch.js",
+    "nightwatch",
+    "SauceLabs",
+    "selenium",
+    "grid"
+  ],
+    "author": "David Mello (https://www.davidmello.com)",
+    "license": "Apache-2.0"
+}
