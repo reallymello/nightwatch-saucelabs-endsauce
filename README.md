@@ -1,4 +1,4 @@
-# nightwatch-saucelabs
+# nightwatch-saucelabs-endsauce
 Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.
 
 ## Running your Nightwatch.js tests against SauceLabs' selenium grid
