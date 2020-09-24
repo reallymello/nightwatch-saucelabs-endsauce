@@ -49,10 +49,12 @@ Example:
 
 ```js
 module.exports = {
+...
     afterEach: function (browser, done) {
         browser.end();
         browser.endSauce(done);
     }
+...
 }
 ```
 
