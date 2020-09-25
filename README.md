@@ -60,4 +60,6 @@ module.exports = {
 
 The endSauce command will update the running test job with the pass or fail status and the name of the test in the format TestClassName - TestName.
 
+More information about [running Nightwatch with SauceLabs](https://www.davidmello.com/software-testing)
+
 *If the browser isn't closed between tests, browser.end, and SauceLabs called in the afterEach I've noticed SauceLabs tends to lump all the tests in a given test class under the name of the test class and hides the results and names of the individual test cases under it. Doing it this way where you close the browser between tests allows each test to be recorded individually.*
