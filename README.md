@@ -1,6 +1,9 @@
 # nightwatch-saucelabs-endsauce
 Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.
 
+- [Example repository](https://github.com/reallymello/nightwatchTutorials/tree/master/sauceLabsExample)
+- Article - [How to use SauceLabs with Nightwatch](https://www.davidmello.com/how-to-use-nightwatch-with-saucelabs/)
+
 ## Running your Nightwatch.js tests against SauceLabs' selenium grid
 
 This package will simplify executing and publishing your Nightwatch.js tests and results to SauceLabs, a cloud hosted selenium grid. It does so by placing the after test execution logic to upload the test result to SauceLabs in a custom command that runs in the afterEach test hook. The actual interface to the SauceLabs REST API is provided through dependency (https://www.npmjs.com/package/saucelabs)
