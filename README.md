@@ -1,6 +1,9 @@
 # nightwatch-saucelabs-endsauce
 Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.
 
+- [Example repository](https://github.com/reallymello/nightwatchTutorials/tree/master/sauceLabsExample)
+- Article - [How to use SauceLabs with Nightwatch](https://www.davidmello.com/how-to-use-nightwatch-with-saucelabs/)
+
 ## Running your Nightwatch.js tests against SauceLabs' selenium grid
 
 This package will simplify executing and publishing your Nightwatch.js tests and results to SauceLabs, a cloud hosted selenium grid. It does so by placing the after test execution logic to upload the test result to SauceLabs in a custom command that runs in the afterEach test hook. The actual interface to the SauceLabs REST API is provided through dependency (https://www.npmjs.com/package/saucelabs)
@@ -59,5 +62,7 @@ module.exports = {
 ```
 
 The endSauce command will update the running test job with the pass or fail status and the name of the test in the format TestClassName - TestName.
+
+More information about [running Nightwatch with SauceLabs](https://www.davidmello.com/how-to-use-nightwatch-with-saucelabs/)
 
 *If the browser isn't closed between tests, browser.end, and SauceLabs called in the afterEach I've noticed SauceLabs tends to lump all the tests in a given test class under the name of the test class and hides the results and names of the individual test cases under it. Doing it this way where you close the browser between tests allows each test to be recorded individually.*
