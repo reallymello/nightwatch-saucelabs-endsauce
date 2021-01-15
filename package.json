@@ -1,6 +1,6 @@
 {
     "name": "nightwatch-saucelabs-endsauce",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.",
     "main": "index.js",
     "scripts": {
@@ -24,6 +24,6 @@
     },
     "homepage": "https://github.com/reallymello/nightwatch-saucelabs-endsauce#readme",
     "dependencies": {
-        "saucelabs": "^4.4.4"
+        "saucelabs": "^4.6.3"
     }
 }
