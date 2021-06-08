@@ -1,10 +1,20 @@
 module.exports.command = async function (done) {
     const SauceLabs = require("saucelabs");
 
+    if (this.options.webdriver.host == "localhost") {
+        console.info("Test was not run against SauceLabs. Update not required. Exiting endSauce().");
+        done();
+        return;
+    } else if (!this.options.webdriver.username || !this.options.webdriver.access_key) {
+        console.log("Missing one or more SauceLabs configuration options. Exiting.");
+        done();
+        return;
+    }
+
     const myAccount = new SauceLabs.default({
-        user: this.options.username,
-        key: this.options.access_key,
-        region: this.options.sauce_region
+        user: this.options.webdriver.username,
+        key: this.options.webdriver.access_key,
+        region: this.options.webdriver.sauce_region
     });
 
     var sessionid = this.capabilities['webdriver.remote.sessionid'],
