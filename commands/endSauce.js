@@ -20,7 +20,7 @@ module.exports.command = async function (done) {
     var sessionid = this.capabilities['webdriver.remote.sessionid'],
         jobName = this.currentTest.name,
         passed = this.currentTest.results.testcases[jobName].failed === 0,
-        groupName = this.currentTest.group;
+        groupName = (this.currentTest.group) ? `${this.currentTest.group} - `: "";
 
     console.log(`SauceOnDemandSessionID=${sessionid}\r\n` +
         `job-name==${jobName}\r\n` +
@@ -29,7 +29,7 @@ module.exports.command = async function (done) {
     await myAccount.updateJob(process.env.SAUCE_USERNAME,
         sessionid, {
             passed: passed,
-            name: `${groupName} - ${jobName}`
+            name: groupName + jobName
         });
 
     done();
