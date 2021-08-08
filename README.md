@@ -10,7 +10,7 @@ This package will simplify executing and publishing your Nightwatch.js tests and
 
 ## Installation instructions
 
-In your Nightwatch test project 
+In your Nightwatch test project
 
 > npm install nightwatch-saucelabs-endsauce --save
 
@@ -28,8 +28,11 @@ The credential values and sauce_region are also used by nightwatch-saucelabs for
       "username": "${SAUCE_USERNAME}",
       "access_key": "${SAUCE_ACCESS_KEY}",
       "sauce_region": "us-west-1",
-      "selenium_port": 443,
-      "selenium_host": "ondemand.saucelabs.com",
+      "selenium": {
+        "port": 443,
+        "host": "ondemand.saucelabs.com",
+        "start_process": false
+      },
       "use_ssl": true,
       "silent": true,
       "desiredCapabilities": {
