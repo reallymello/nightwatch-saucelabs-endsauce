@@ -24,6 +24,6 @@
     },
     "homepage": "https://github.com/reallymello/nightwatch-saucelabs-endsauce#readme",
     "dependencies": {
-        "saucelabs": "^4.6.3"
+        "saucelabs": "^6.0.0"
     }
 }
