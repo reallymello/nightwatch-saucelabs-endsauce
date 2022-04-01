@@ -7,12 +7,12 @@
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
-    "Nightwatch.js",
-    "nightwatch",
-    "SauceLabs",
-    "selenium",
-    "grid"
-  ],
+        "Nightwatch.js",
+        "nightwatch",
+        "SauceLabs",
+        "selenium",
+        "grid"
+    ],
     "author": "David Mello (https://www.davidmello.com)",
     "license": "Apache-2.0",
     "repository": {
@@ -24,6 +24,6 @@
     },
     "homepage": "https://github.com/reallymello/nightwatch-saucelabs-endsauce#readme",
     "dependencies": {
-        "saucelabs": "^6.0.0"
+        "saucelabs": "^7.1.3"
     }
 }
