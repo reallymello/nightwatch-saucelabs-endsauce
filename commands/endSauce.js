@@ -8,16 +8,23 @@ module.exports = class CustomCommand {
             if (this.api.options.webdriver.host == "localhost") {
                 console.info("Test was not run against SauceLabs. Update not required. Exiting endSauce().");
                 return sauceResponse;
-            } else if (!this.api.options.username || !this.api.options.access_key || !this.api.options.sauce_region) {
+            }
+
+            // In Nightwatch 2.0 the convention is moving toward sauce:options
+            // Getting value from there first and falling back to options collection if missing
+            let sauceOptions = this.api.options.desiredCapabilities['sauce:options'];
+            let sauceSettings = {
+                user: sauceOptions.username ? sauceOptions.username : this.api.options.username,
+                key: sauceOptions.access_key ? sauceOptions.access_key : this.api.options.access_key,
+                region: sauceOptions.sauce_region ? sauceOptions.sauce_region : this.api.options.sauce_region
+            };
+
+            if (!sauceSettings.user || !sauceSettings.key || !sauceSettings.region) {
                 console.error("Missing one or more SauceLabs configuration options (username, access_key, or sauce_region). Exiting.");
                 return sauceResponse;
             }
 
-            const myAccount = new SauceLabs.default({
-                user: this.api.options.username,
-                key: this.api.options.access_key,
-                region: this.api.options.sauce_region
-            })
+            const myAccount = new SauceLabs.default(sauceSettings);
 
             var sessionid = this.api.sessionId,
                 jobName = this.api.currentTest.name,

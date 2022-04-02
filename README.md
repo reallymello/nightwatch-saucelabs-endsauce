@@ -1,4 +1,5 @@
 # nightwatch-saucelabs-endsauce
+
 Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.
 
 - [Example repository](https://github.com/reallymello/nightwatchTutorials/tree/master/sauceLabsExample)
@@ -22,6 +23,8 @@ The SauceLabs package looks in the nightwatch.json file for the values it needs 
 
 The credential values and sauce_region are also used by nightwatch-saucelabs for uploading the test result.
 
+For Nightwatch versions < 2.0
+
 ```json
 "test_settings": {
     "default": {
@@ -36,6 +39,39 @@ The credential values and sauce_region are also used by nightwatch-saucelabs for
       "use_ssl": true,
       "silent": true,
       "desiredCapabilities": {
+        "browserName": "chrome",
+        "screenResolution": "1280x1024",
+        "browserVersion": "latest",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true,
+        "timeZone": "New York"
+      }
+    }
+  }
+```
+
+For Nightwatch versions > 2.0 the pattern seems to be moving the values under desiredCapabilities within sauce:options.
+
+```json
+"test_settings": {
+    "default": {
+      "selenium": {
+        "port": 443,
+        "host": "ondemand.saucelabs.com",
+        "start_process": false
+      },
+      "use_ssl": true,
+      "silent": true,
+      "desiredCapabilities": {
+        'sauce:options' : {
+          userName: '${SAUCE_USERNAME}',
+          accessKey: '${SAUCE_ACCESS_KEY}',
+          // https://docs.saucelabs.com/dev/cli/sauce-connect-proxy/#--region
+          sauce_region: us-west-1,
+          // https://docs.saucelabs.com/dev/test-configuration-options/#tunnelidentifier
+          // parentTunnel: ''
+          // tunnelIdentifier: ''
+        },
         "browserName": "chrome",
         "screenResolution": "1280x1024",
         "browserVersion": "latest",
@@ -68,4 +104,4 @@ The endSauce command will update the running test job with the pass or fail stat
 
 More information about [running Nightwatch with SauceLabs](https://www.davidmello.com/how-to-use-nightwatch-with-saucelabs/)
 
-*If the browser isn't closed between tests, browser.end, and SauceLabs called in the afterEach I've noticed SauceLabs tends to lump all the tests in a given test class under the name of the test class and hides the results and names of the individual test cases under it. Doing it this way where you close the browser between tests allows each test to be recorded individually.*
+_If the browser isn't closed between tests, browser.end, and SauceLabs called in the afterEach I've noticed SauceLabs tends to lump all the tests in a given test class under the name of the test class and hides the results and names of the individual test cases under it. Doing it this way where you close the browser between tests allows each test to be recorded individually._
