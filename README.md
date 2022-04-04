@@ -67,7 +67,7 @@ For Nightwatch versions > 2.0 the pattern seems to be moving the values under de
           "username": "${SAUCE_USERNAME}",
           "accessKey": "${SAUCE_ACCESS_KEY}",
           // https://docs.saucelabs.com/dev/cli/sauce-connect-proxy/#--region
-          "region": "us-west-1",
+          // "region": "us-west-1",
           // https://docs.saucelabs.com/dev/test-configuration-options/#tunnelidentifier
           // "parentTunnel": ""
           // "tunnelIdentifier": ""

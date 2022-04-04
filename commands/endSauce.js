@@ -19,8 +19,8 @@ module.exports = class CustomCommand {
                 region: sauceOptions.region ? sauceOptions.region : this.api.options.sauce_region
             };
 
-            if (!sauceSettings.user || !sauceSettings.key || !sauceSettings.region) {
-                console.error("Missing one or more SauceLabs configuration options (username, access_key, or sauce_region). Exiting.");
+            if (!sauceSettings.user || !sauceSettings.key) {
+                console.error("Missing one or more SauceLabs configuration options (username or access_key). Exiting.");
                 return sauceResponse;
             }
 
