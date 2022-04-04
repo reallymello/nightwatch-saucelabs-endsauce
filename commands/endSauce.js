@@ -15,8 +15,8 @@ module.exports = class CustomCommand {
             const sauceOptions = this.api.options.desiredCapabilities['sauce:options'] || {};
             const sauceSettings = {
                 user: sauceOptions.username ? sauceOptions.username : this.api.options.username,
-                key: sauceOptions.access_key ? sauceOptions.access_key : this.api.options.access_key,
-                region: sauceOptions.sauce_region ? sauceOptions.sauce_region : this.api.options.sauce_region
+                key: sauceOptions.accessKey ? sauceOptions.accessKey : this.api.options.access_key,
+                region: sauceOptions.region ? sauceOptions.region : this.api.options.sauce_region
             };
 
             if (!sauceSettings.user || !sauceSettings.key || !sauceSettings.region) {

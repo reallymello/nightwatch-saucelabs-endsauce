@@ -52,7 +52,7 @@ For Nightwatch versions < 2.0
 
 For Nightwatch versions > 2.0 the pattern seems to be moving the values under desiredCapabilities within sauce:options.
 
-```json
+```jsonc
 "test_settings": {
     "default": {
       "selenium": {
@@ -63,14 +63,14 @@ For Nightwatch versions > 2.0 the pattern seems to be moving the values under de
       "use_ssl": true,
       "silent": true,
       "desiredCapabilities": {
-        'sauce:options' : {
-          userName: '${SAUCE_USERNAME}',
-          accessKey: '${SAUCE_ACCESS_KEY}',
+        "sauce:options" : {
+          "username": "${SAUCE_USERNAME}",
+          "accessKey": "${SAUCE_ACCESS_KEY}",
           // https://docs.saucelabs.com/dev/cli/sauce-connect-proxy/#--region
-          sauce_region: us-west-1,
+          "region": "us-west-1",
           // https://docs.saucelabs.com/dev/test-configuration-options/#tunnelidentifier
-          // parentTunnel: ''
-          // tunnelIdentifier: ''
+          // "parentTunnel": ""
+          // "tunnelIdentifier": ""
         },
         "browserName": "chrome",
         "screenResolution": "1280x1024",
