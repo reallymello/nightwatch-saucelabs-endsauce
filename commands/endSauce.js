@@ -12,15 +12,15 @@ module.exports = class CustomCommand {
 
             // In Nightwatch 2.0 the convention is moving toward sauce:options
             // Getting value from there first and falling back to options collection if missing
-            let sauceOptions = this.api.options.desiredCapabilities['sauce:options'];
-            let sauceSettings = {
+            const sauceOptions = this.api.options.desiredCapabilities['sauce:options'] || {};
+            const sauceSettings = {
                 user: sauceOptions.username ? sauceOptions.username : this.api.options.username,
-                key: sauceOptions.access_key ? sauceOptions.access_key : this.api.options.access_key,
-                region: sauceOptions.sauce_region ? sauceOptions.sauce_region : this.api.options.sauce_region
+                key: sauceOptions.accessKey ? sauceOptions.accessKey : this.api.options.access_key,
+                region: sauceOptions.region ? sauceOptions.region : this.api.options.sauce_region
             };
 
-            if (!sauceSettings.user || !sauceSettings.key || !sauceSettings.region) {
-                console.error("Missing one or more SauceLabs configuration options (username, access_key, or sauce_region). Exiting.");
+            if (!sauceSettings.user || !sauceSettings.key) {
+                console.error("Missing one or more SauceLabs configuration options (username or access_key). Exiting.");
                 return sauceResponse;
             }
 
