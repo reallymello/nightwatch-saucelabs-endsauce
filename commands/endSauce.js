@@ -26,7 +26,7 @@ module.exports = class CustomCommand {
 
             const myAccount = new SauceLabs.default(sauceSettings);
 
-            var sessionid = this.api.sessionId,
+            var sessionid = this.api.sessionId ? this.api.sessionId : this.api.capabilities['webdriver.remote.sessionid'],
                 jobName = this.api.currentTest.name,
                 passed = this.api.currentTest.results.testcases[jobName].failed === 0,
                 groupName = (this.api.currentTest.group) ? `${this.api.currentTest.group} - ` : "";
