@@ -87,14 +87,16 @@ For Nightwatch versions > 2.0 the pattern seems to be moving the values under de
 
 To close the loop and update the results in your SauceLabs dashboard you will call the endSauce command in the Nightwatch afterEach hook.
 
+_In Nightwatch versions >= 2.0 ensure browser.endSauce() is called before calling browser.end()._
+
 Example:
 
 ```js
 module.exports = {
 ...
-    afterEach: function (browser, done) {
+    afterEach: function (browser) {
+        browser.endSauce();
         browser.end();
-        browser.endSauce(done);
     }
 ...
 }
