@@ -41,7 +41,10 @@ module.exports = class CustomCommand {
           ? this.api.sessionId
           : this.api.capabilities['webdriver.remote.sessionid'],
         jobName = this.api.currentTest.name,
-        passed = this.api.currentTest.results.testcases[jobName].failed === 0,
+        passed =
+          this.api.currentTest.results.testcases[jobName].failed +
+            this.api.currentTest.results.testcases[jobName].errors ===
+          0,
         groupName = this.api.currentTest.group
           ? `${this.api.currentTest.group} - `
           : '';
