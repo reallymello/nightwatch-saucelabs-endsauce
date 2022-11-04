@@ -1,14 +1,16 @@
+/* eslint-disable no-console */
 module.exports = class CustomCommand {
   async command() {
+    // eslint-disable-next-line global-require
     const SauceLabs = require('saucelabs');
 
-    let sauceResponse;
+    let sauceResponse = { status: -1, error: '' };
 
     try {
-      if (this.api.options.webdriver.host == 'localhost') {
-        console.info(
-          'Test was not run against SauceLabs. Update not required. Exiting endSauce().'
-        );
+      if (this.api.options.webdriver.host === 'localhost') {
+        sauceResponse.error =
+          'Test was not run against SauceLabs. Update not required. Exiting endSauce().';
+        console.info(sauceResponse.error);
         return sauceResponse;
       }
 
@@ -29,31 +31,31 @@ module.exports = class CustomCommand {
       };
 
       if (!sauceSettings.user || !sauceSettings.key) {
-        console.error(
-          'Missing one or more SauceLabs configuration options (username or access_key). Exiting.'
-        );
+        sauceResponse.error =
+          'Missing one or more SauceLabs configuration options (username or access_key). Exiting.';
+        console.error(sauceResponse.error);
         return sauceResponse;
       }
 
+      // eslint-disable-next-line new-cap
       const myAccount = new SauceLabs.default(sauceSettings);
-
-      var sessionid = this.api.sessionId
-          ? this.api.sessionId
-          : this.api.capabilities['webdriver.remote.sessionid'],
-        jobName = this.api.currentTest.name,
-        passed =
-          this.api.currentTest.results.testcases[jobName].failed +
-            this.api.currentTest.results.testcases[jobName].errors ===
-          0,
-        groupName = this.api.currentTest.group
-          ? `${this.api.currentTest.group} - `
-          : '';
+      const sessionid = this.api.sessionId
+        ? this.api.sessionId
+        : this.api.capabilities['webdriver.remote.sessionid'];
+      const jobName = this.api.currentTest.name;
+      const passed =
+        this.api.currentTest.results.testcases[jobName].failed +
+          this.api.currentTest.results.testcases[jobName].errors ===
+        0;
+      const groupName = this.api.currentTest.group
+        ? `${this.api.currentTest.group} - `
+        : '';
 
       if (!sessionid) {
+        sauceResponse.error =
+          '❌ browser.sessionId undefined. Ensure endSauce() was called before browser was closed. Test result will not be updated.';
         console.log('\r\n❌ Error calling endSauce()');
-        console.error(
-          '❌ browser.sessionId undefined. Ensure endSauce() was called before browser was closed. Test result will not be updated.'
-        );
+        console.error(sauceResponse.error);
         return sauceResponse;
       }
 
@@ -64,10 +66,10 @@ module.exports = class CustomCommand {
       );
 
       sauceResponse = await myAccount.updateJob(
-        /*process.env.SAUCE_USERNAME*/ sauceSettings.user,
+        /* process.env.SAUCE_USERNAME */ sauceSettings.user,
         sessionid,
         {
-          passed: passed,
+          passed,
           name: groupName + jobName,
         }
       );
@@ -77,6 +79,7 @@ module.exports = class CustomCommand {
         status: -1,
         error: err.message,
       };
+      return sauceResponse;
     }
 
     return sauceResponse;

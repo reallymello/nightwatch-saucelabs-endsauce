@@ -15,11 +15,21 @@ In your Nightwatch test project
 
 > npm install nightwatch-saucelabs-endsauce --save
 
-In your Nightwatch nightwatch.json configuration file add or append this entry
+In your Nightwatch configuration file (nightwatch.conf.js or nightwatch.json) add or append this entry depending on your Nightwatch version
 
-> "custom_commands_path": ["./node_modules/nightwatch-saucelabs-endsauce/commands"]
+Nightwatch versions >= 2.0 [Plugin Pattern](https://nightwatchjs.org/guide/extending-nightwatch/adding-plugins.html#guide-container)
 
-The SauceLabs package looks in the nightwatch.json file for the values it needs to connect to the SauceLabs REST API such as the username, apikey, urls and so forth. Below is an excerpt of the important parts. The desired capabilities section is more to tell SauceLabs the environment you want the test to run under.
+> "plugins": ["nightwatch-saucelabs-endsauce"]
+
+Nightwatch versions older than 2.0 (or if you prefer using custom_commands_path over plugins):
+
+**If you are upgrading from a 1.x version of nightwatch-saucelabs-endsauce please note the new directory path below. This will need to be updated if you want to continue using the custom_commands_path style of importing**
+
+> "custom_commands_path": ["./node_modules/nightwatch-saucelabs-endsauce/nightwatch/commands"]
+
+_Use either the `plugins` setting or `custom_commands_path`, not both._
+
+The SauceLabs package looks in the nightwatch.conf.js file for the values it needs to connect to the SauceLabs REST API such as the username, apikey, urls and so forth. Below is an excerpt of the important parts. The desired capabilities section is more to tell SauceLabs the environment you want the test to run under.
 
 The credential values and sauce_region are also used by nightwatch-saucelabs for uploading the test result.
 
@@ -52,7 +62,7 @@ For Nightwatch versions < 2.0
 
 For Nightwatch versions > 2.0 the pattern seems to be moving the values under desiredCapabilities within sauce:options.
 
-```jsonc
+```json
 "test_settings": {
     "default": {
       "selenium": {
@@ -81,6 +91,21 @@ For Nightwatch versions > 2.0 the pattern seems to be moving the values under de
       }
     }
   }
+```
+
+### TypeScript Support
+
+If you are working in a TypeScript project you may notice the `.endSauce()` command is not available on the browser object types by default. To add it to the Nightwatch browser types add a file called `nightwatch.d.ts` in the root of your tests folder with these contents inside.
+
+```ts
+// nightwatch.d.ts
+import { NightwatchAPI, Awaitable } from 'nightwatch';
+
+declare module 'nightwatch' {
+  export interface NightwatchCustomCommands {
+    endSauce(): Awaitable<NightwatchAPI>;
+  }
+}
 ```
 
 ## Sending Nightwatch test result to SauceLabs

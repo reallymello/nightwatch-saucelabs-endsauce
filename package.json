@@ -1,29 +1,47 @@
 {
-    "name": "nightwatch-saucelabs-endsauce",
-    "version": "1.2.1",
-    "description": "Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [
-        "Nightwatch.js",
-        "nightwatch",
-        "SauceLabs",
-        "selenium",
-        "grid"
-    ],
-    "author": "David Mello (https://www.davidmello.com)",
-    "license": "Apache-2.0",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/reallymello/nightwatch-saucelabs-endsauce.git"
-    },
-    "bugs": {
-        "url": "https://github.com/reallymello/nightwatch-saucelabs-endsauce/issues"
-    },
-    "homepage": "https://github.com/reallymello/nightwatch-saucelabs-endsauce#readme",
-    "dependencies": {
-        "saucelabs": "^7.1.3"
-    }
+  "name": "nightwatch-saucelabs-endsauce",
+  "version": "1.2.1",
+  "description": "Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ./nightwatch/** ./tests/**",
+    "lint:fix": "eslint ./nightwatch/** ./tests/** --fix",
+    "test": "rimraf ./tests_output/ && nightwatch --env saucelabs"
+  },
+  "keywords": [
+    "Nightwatch.js",
+    "nightwatch",
+    "SauceLabs",
+    "selenium",
+    "grid"
+  ],
+  "files": [
+    "nightwatch/**/*"
+  ],
+  "author": "David Mello (https://www.davidmello.com)",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reallymello/nightwatch-saucelabs-endsauce.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reallymello/nightwatch-saucelabs-endsauce/issues"
+  },
+  "homepage": "https://github.com/reallymello/nightwatch-saucelabs-endsauce#readme",
+  "dependencies": {
+    "saucelabs": "^7.2.0"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.5",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.1",
+    "mocha": "^10.0.0",
+    "nightwatch": "^2.4.2",
+    "prettier": "^2.7.1"
+  }
 }
