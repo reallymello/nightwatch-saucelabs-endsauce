@@ -23,7 +23,7 @@ Nightwatch versions >= 2.0 [Plugin Pattern](https://nightwatchjs.org/guide/exten
 
 Nightwatch versions older than 2.0 (or if you prefer using custom_commands_path over plugins):
 
-**If you are upgrading from a 1.x version of nightwatch-saucelabs-endsauce please note the new directory path below. This will need to be updated if you want to continue using the custom_commands_path style of importing**
+>**If you are upgrading from a 1.x version of nightwatch-saucelabs-endsauce please note the new directory path below. This will need to be updated if you want to continue using the custom_commands_path style of importing**
 
 > "custom_commands_path": ["./node_modules/nightwatch-saucelabs-endsauce/nightwatch/commands"]
 
@@ -35,7 +35,7 @@ The credential values and sauce_region are also used by nightwatch-saucelabs for
 
 For Nightwatch versions < 2.0
 
-```json
+```js
 "test_settings": {
     "default": {
       "username": "${SAUCE_USERNAME}",
@@ -62,7 +62,7 @@ For Nightwatch versions < 2.0
 
 For Nightwatch versions > 2.0 the pattern seems to be moving the values under desiredCapabilities within sauce:options.
 
-```json
+```js
 "test_settings": {
     "default": {
       "selenium": {
