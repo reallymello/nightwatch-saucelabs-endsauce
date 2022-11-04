@@ -2,6 +2,8 @@
 
 Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.
 
+[![Node.js CI](https://github.com/reallymello/nightwatch-saucelabs-endsauce/actions/workflows/node.js.yml/badge.svg)](https://github.com/reallymello/nightwatch-saucelabs-endsauce/actions/workflows/node.js.yml)
+
 - [Example repository](https://github.com/reallymello/nightwatchTutorials/tree/master/sauceLabsExample)
 - Article - [How to use SauceLabs with Nightwatch](https://www.davidmello.com/how-to-use-nightwatch-with-saucelabs/)
 
