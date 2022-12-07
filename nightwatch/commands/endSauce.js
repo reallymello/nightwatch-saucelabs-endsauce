@@ -47,8 +47,12 @@ module.exports = class CustomCommand {
         this.api.currentTest.results.testcases[jobName].failed +
           this.api.currentTest.results.testcases[jobName].errors ===
         0;
-      const groupName = this.api.currentTest.group
+      /* const groupName = this.api.currentTest.group
         ? `${this.api.currentTest.group} - `
+        : ''; */
+
+      const moduleName = this.api.currentTest.module
+        ? `${this.api.currentTest.module} - `
         : '';
 
       if (!sessionid) {
@@ -70,7 +74,7 @@ module.exports = class CustomCommand {
         sessionid,
         {
           passed,
-          name: groupName + jobName,
+          name: /* groupName +*/ moduleName + jobName,
         }
       );
     } catch (err) {
