@@ -3,6 +3,7 @@
   "version": "2.1.0",
   "description": "Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "lint": "eslint ./nightwatch/** ./tests/**",
     "lint:fix": "eslint ./nightwatch/** ./tests/** --fix",

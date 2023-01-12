@@ -63,9 +63,9 @@ module.exports = class CustomCommand {
         return sauceResponse;
       }
 
-      console.log(
-        `SauceOnDemandSessionID=${sessionid}\r\n` +
-          `job-name==${jobName}\r\n` +
+      console.info(
+        `\r\nSauceOnDemandSessionID=${sessionid}\r\n` +
+          `job-name=${jobName}\r\n` +
           `passed=${passed}\r\n`
       );
 
