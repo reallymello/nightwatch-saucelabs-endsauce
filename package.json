@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "lint": "eslint ./nightwatch/** ./tests/**",
+    "lint": "eslint ./nightwatch/commands/** ./tests/**",
     "lint:fix": "eslint ./nightwatch/** ./tests/** --fix",
     "test": "rimraf ./tests_output/ && nightwatch --env saucelabs"
   },
@@ -33,6 +33,7 @@
     "saucelabs": "^7.2.0"
   },
   "devDependencies": {
+    "@types/nightwatch": "^2.3.18",
     "assert": "^2.0.0",
     "eslint": "^8.23.0",
     "eslint-config-airbnb-base": "^15.0.0",
