@@ -97,7 +97,23 @@ For Nightwatch versions > 2.0 the pattern seems to be moving the values under de
 
 ### TypeScript Support
 
-If you are working in a TypeScript project you may notice the `.endSauce()` command is not available on the browser object types by default. To add it to the Nightwatch browser types add a file called `nightwatch.d.ts` in the root of your tests folder with these contents inside.
+If you are working in a TypeScript project you may notice the `.endSauce()` command is not available on the browser object types by default. To import the types you can do one of the following. Option 1 is preferred.
+
+Option 1, add `types": ["nightwatch-saucelabs-endsauce"]` to your tsconfig.json under compilerOptions
+
+Example:
+```json
+"compilerOptions": {
+  "types": ["nightwatch-saucelabs-endsauce"],
+}
+```
+
+Option 2, in a test you can add `import 'nightwatch-saucelabs-endsauce'`
+
+Option 3, manually add the definition to an override of the nightwatch types
+
+Example:
+To add it to the Nightwatch browser types add a file called `nightwatch.d.ts` in the root of your tests folder with these contents inside.
 
 ```ts
 // nightwatch.d.ts
@@ -105,7 +121,7 @@ import { NightwatchAPI, Awaitable } from 'nightwatch';
 
 declare module 'nightwatch' {
   export interface NightwatchCustomCommands {
-    endSauce(): Awaitable<NightwatchAPI>;
+    endSauce(): Awaitable<NightwatchAPI, any>;
   }
 }
 ```
