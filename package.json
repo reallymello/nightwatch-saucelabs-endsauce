@@ -1,6 +1,6 @@
 {
   "name": "nightwatch-saucelabs-endsauce",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "Nightwatch.js custom command for running Nightwatch.js tests against SauceLabs.",
   "main": "index.js",
   "types": "./nightwatch/types/index.d.ts",
@@ -30,12 +30,13 @@
   },
   "homepage": "https://github.com/reallymello/nightwatch-saucelabs-endsauce#readme",
   "dependencies": {
-    "saucelabs": "^7.2.0"
+    "saucelabs": "^7.2.2"
   },
   "devDependencies": {
     "@types/nightwatch": "^2.3.18",
     "assert": "^2.0.0",
-    "eslint": "^8.23.0",
+    "chromedriver": "^114.0.2",
+    "eslint": "^8.43.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
@@ -43,7 +44,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.1",
     "mocha": "^10.0.0",
-    "nightwatch": "^2.4.2",
+    "nightwatch": "^3.0.1",
     "prettier": "^2.7.1"
   }
 }

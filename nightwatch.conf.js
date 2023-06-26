@@ -71,7 +71,7 @@ module.exports = {
       use_ssl: true,
       selenium: {
         start_process: false,
-        host: 'ondemand.saucelabs.com',
+        host: 'ondemand.us-west-1.saucelabs.com',
         port: 443,
       },
 
