@@ -25,7 +25,7 @@ Nightwatch versions >= 2.0 [Plugin Pattern](https://nightwatchjs.org/guide/exten
 
 Nightwatch versions older than 2.0 (or if you prefer using custom_commands_path over plugins):
 
->**If you are upgrading from a 1.x version of nightwatch-saucelabs-endsauce please note the new directory path below. This will need to be updated if you want to continue using the custom_commands_path style of importing**
+> **If you are upgrading from a 1.x version of nightwatch-saucelabs-endsauce please note the new directory path below. This will need to be updated if you want to continue using the custom_commands_path style of importing**
 
 > "custom_commands_path": ["./node_modules/nightwatch-saucelabs-endsauce/nightwatch/commands"]
 
@@ -102,6 +102,7 @@ If you are working in a TypeScript project you may notice the `.endSauce()` comm
 **Option 1**, add `types": ["nightwatch-saucelabs-endsauce"]` to your tsconfig.json under compilerOptions
 
 Example:
+
 ```json
 "compilerOptions": {
   "types": ["nightwatch-saucelabs-endsauce"],
@@ -113,6 +114,7 @@ Example:
 **Option 3**, manually add the definition to the Nightwatch browser types add a file called `nightwatch.d.ts` in the root of your tests folder with these contents inside.
 
 Example:
+
 ```ts
 // nightwatch.d.ts
 import { NightwatchAPI, Awaitable } from 'nightwatch';
@@ -125,6 +127,8 @@ declare module 'nightwatch' {
 ```
 
 ## Sending Nightwatch test result to SauceLabs
+
+### Option 1, after session closes
 
 To close the loop and update the results in your SauceLabs dashboard you will call the endSauce command in the Nightwatch afterEach hook.
 
@@ -148,3 +152,7 @@ The endSauce command will update the running test job with the pass or fail stat
 More information about [running Nightwatch with SauceLabs](https://www.davidmello.com/how-to-use-nightwatch-with-saucelabs/)
 
 _If the browser isn't closed between tests, browser.end, and SauceLabs called in the afterEach I've noticed SauceLabs tends to lump all the tests in a given test class under the name of the test class and hides the results and names of the individual test cases under it. Doing it this way where you close the browser between tests allows each test to be recorded individually._
+
+### Option 2, Updating in session
+
+While the session is still active you can alternately use `browser.endSauceAnnotation()` to [update the status in session](https://docs.saucelabs.com/test-results/test-status/#update-test-status-in-session) in the after or afterEach test hook before the browser is closed. This will update the test name and current test status in the SauceLabs Test Results portal (this would be in place of using browser.endSauce()).
