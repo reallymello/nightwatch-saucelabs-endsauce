@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 module.exports = class CustomCommand {
-  command() {
+  async command() {
     if (this.api.options.webdriver.host === 'localhost') {
       console.info(
         'Test was not run against SauceLabs. Update not required. Exiting endSauce().'
@@ -42,7 +42,7 @@ module.exports = class CustomCommand {
       this.api.currentTest.results.testcases[jobName].failed +
         this.api.currentTest.results.testcases[jobName].errors ===
       0;
-    this.api.execute(`sauce:job-result=${passed}`);
-    this.api.execute(`sauce:job-name=${moduleName + jobName}`);
+    await this.api.execute(`sauce:job-result=${passed}`);
+    await this.api.execute(`sauce:job-name=${moduleName + jobName}`);
   }
 };

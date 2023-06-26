@@ -19,6 +19,6 @@ declare module 'nightwatch' {
      * Should be called before closing the browser session.
      * {@link https://github.com/reallymello/nightwatch-saucelabs-endsauce/blob/master/README.md | Requires configuration}
      */
-     endSauceAnnotation(): Awaitable<NightwatchAPI, any>;
+     endSauceAnnotation(): Awaitable<void, any>;
   }
 }
