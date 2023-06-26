@@ -31,7 +31,6 @@ describe('When called with valid config', () => {
       jobResponse.name,
       'endSauceAnnotationTest - Can use sauce script to update test status and name'
     );
-    //console.log(JSON.stringify(jobResponse));
   });
 
   after((browser) => {
