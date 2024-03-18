@@ -12,22 +12,17 @@ module.exports = class CustomCommand {
     // Getting value from there first and falling back to options collection if missing
     const sauceOptions =
       this.api.options.desiredCapabilities['sauce:options'] || {};
-    const sauceVisualOptions =
-      this.api.options.desiredCapabilities['sauce:visual'] || {};
     const sauceSettings = {
       user: sauceOptions.username || this.api.options.username,
       key:
         sauceOptions.accessKey ||
         sauceOptions.access_key ||
+        sauceOptions.accesskey ||
         this.api.options.access_key,
       region: sauceOptions.region || this.api.options.sauce_region,
-      visualKey: sauceVisualOptions.apiKey || this.api.options.apiKey,
     };
 
-    if (
-      (!sauceSettings.user || !sauceSettings.key) &&
-      !sauceSettings.visualKey
-    ) {
+    if (!sauceSettings.user || !sauceSettings.key) {
       console.error(
         'Missing one or more SauceLabs configuration options (username or access_key). Exiting.'
       );

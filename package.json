@@ -6,7 +6,7 @@
   "types": "./nightwatch/types/index.d.ts",
   "scripts": {
     "lint": "eslint ./nightwatch/commands/** ./tests/**",
-    "lint:fix": "eslint ./nightwatch/** ./tests/** --fix",
+    "lint:fix": "npm run lint -- --fix",
     "test": "rimraf ./tests_output/ && nightwatch --env saucelabs"
   },
   "keywords": [
